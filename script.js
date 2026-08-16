@@ -1,4 +1,113 @@
 /* =========================================
+   MUSIC
+   ED SHEERAN - PERFECT
+========================================= */
+
+let musicFrame = null;
+
+let musicPlaying = false;
+
+
+function startMusic(){
+
+    if(musicPlaying){
+        return;
+    }
+
+
+    /*
+        The YouTube iframe is created only after
+        the user taps "Start Your Surprise".
+
+        This is important because mobile browsers
+        usually block autoplay with sound until
+        the user interacts with the page.
+    */
+
+
+    musicFrame =
+        document.createElement("iframe");
+
+
+    musicFrame.src =
+        "https://www.youtube.com/embed/2Vv-BfVoq4g" +
+        "?autoplay=1" +
+        "&controls=0" +
+        "&loop=1" +
+        "&playlist=2Vv-BfVoq4g" +
+        "&playsinline=1" +
+        "&rel=0";
+
+
+    musicFrame.style.position =
+        "fixed";
+
+
+    musicFrame.style.width =
+        "1px";
+
+
+    musicFrame.style.height =
+        "1px";
+
+
+    musicFrame.style.left =
+        "-10px";
+
+
+    musicFrame.style.top =
+        "-10px";
+
+
+    musicFrame.style.opacity =
+        "0";
+
+
+    musicFrame.style.pointerEvents =
+        "none";
+
+
+    musicFrame.setAttribute(
+        "allow",
+        "autoplay"
+    );
+
+
+    document.body.appendChild(
+        musicFrame
+    );
+
+
+    musicPlaying = true;
+
+}
+
+
+
+/* =========================================
+   START EXPERIENCE
+========================================= */
+
+function startExperience(){
+
+    /*
+       Music starts immediately after the
+       user's tap.
+    */
+
+    startMusic();
+
+
+    createHeartExplosion();
+
+
+    nextPage("birthday");
+
+}
+
+
+
+/* =========================================
    PAGE NAVIGATION
 ========================================= */
 
@@ -31,134 +140,6 @@ function nextPage(id){
         behavior:"smooth"
 
     });
-
-}
-
-
-
-/* =========================================
-   MUSIC
-   ED SHEERAN - PERFECT
-========================================= */
-
-let musicFrame = null;
-
-let musicPlaying = false;
-
-
-function startMusic(){
-
-    if(musicPlaying){
-
-        return;
-
-    }
-
-
-    musicFrame =
-        document.createElement("iframe");
-
-
-    musicFrame.src =
-        "https://www.youtube.com/embed/2Vv-BfVoq4g" +
-        "?autoplay=1" +
-        "&controls=0" +
-        "&loop=1" +
-        "&playlist=2Vv-BfVoq4g" +
-        "&playsinline=1" +
-        "&rel=0";
-
-
-    musicFrame.style.position =
-        "fixed";
-
-    musicFrame.style.width =
-        "1px";
-
-    musicFrame.style.height =
-        "1px";
-
-    musicFrame.style.left =
-        "-10px";
-
-    musicFrame.style.top =
-        "-10px";
-
-    musicFrame.style.opacity =
-        "0";
-
-    musicFrame.style.pointerEvents =
-        "none";
-
-
-    musicFrame.setAttribute(
-        "allow",
-        "autoplay"
-    );
-
-
-    document.body.appendChild(
-        musicFrame
-    );
-
-
-    musicPlaying = true;
-
-
-    document.getElementById(
-        "musicButton"
-    ).innerHTML = "🎵";
-
-}
-
-
-
-/* =========================================
-   MUSIC BUTTON
-========================================= */
-
-function toggleMusic(){
-
-    if(!musicPlaying){
-
-        startMusic();
-
-        return;
-
-    }
-
-
-    if(musicFrame){
-
-        musicFrame.remove();
-
-        musicFrame = null;
-
-    }
-
-
-    musicPlaying = false;
-
-
-    document.getElementById(
-        "musicButton"
-    ).innerHTML = "🔇";
-
-}
-
-
-
-/* =========================================
-   START EXPERIENCE
-========================================= */
-
-function startExperience(){
-
-    startMusic();
-
-    createHeartExplosion();
-
-    nextPage("birthday");
 
 }
 
@@ -202,7 +183,7 @@ function correct1(){
 
 
 /* =========================================
-   GAME 2 - CATCH MY HEART
+   GAME 2
 ========================================= */
 
 let catchScore = 0;
@@ -243,17 +224,10 @@ function startHeartGame(){
 }
 
 
-
-/* =========================================
-   MOVE HEART
-========================================= */
-
 function moveHeart(){
 
     if(!catchGameRunning){
-
         return;
-
     }
 
 
@@ -304,17 +278,10 @@ function moveHeart(){
 }
 
 
-
-/* =========================================
-   CATCH HEART
-========================================= */
-
 function catchHeart(){
 
     if(!catchGameRunning){
-
         return;
-
     }
 
 
@@ -432,19 +399,21 @@ function openGift(){
 
 
 /* =========================================
-   FINAL SURPRISE
+   FINAL TRANSITION
 ========================================= */
 
-function revealFinal(){
+function startFinalTransition(){
 
-    document
-        .getElementById(
-            "finalHidden"
-        )
-        .classList.add("show");
+    nextPage("transition");
 
 
-    createHeartExplosion();
+    setTimeout(function(){
+
+        nextPage("love");
+
+        createHeartExplosion();
+
+    },4500);
 
 }
 
@@ -472,7 +441,8 @@ function createHeart(){
         "💗",
         "💖",
         "💕",
-        "💘"
+        "💘",
+        "💞"
 
     ];
 
