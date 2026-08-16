@@ -405,7 +405,7 @@ button{
 
 
 /* =========================================
-   GAMES
+   GAME 1 & GAME 3
 ========================================= */
 
 #game1,
@@ -516,12 +516,13 @@ button{
 
 
 /* =========================================
-   HEART GAME
+   GAME 2 - CATCH MY HEART
 ========================================= */
 
 #heartGame{
 
     background:
+
     radial-gradient(
         circle,
         #35001d,
@@ -531,19 +532,20 @@ button{
 }
 
 
-.section-title{
+.game2-text{
 
-    font-size:
-    clamp(40px,8vw,70px);
+    margin-top:15px;
 
-    margin-bottom:10px;
+    line-height:1.8;
+
+    opacity:.8;
 
 }
 
 
-.score{
+.catch-score{
 
-    margin:15px;
+    margin:20px 0;
 
     font-size:21px;
 
@@ -552,13 +554,15 @@ button{
 }
 
 
-.heart-area{
+.catch-area{
 
-    height:400px;
+    width:100%;
 
     max-width:700px;
 
-    margin:20px auto 0;
+    height:400px;
+
+    margin:auto;
 
     position:relative;
 
@@ -566,46 +570,72 @@ button{
 
     border-radius:25px;
 
+    background:
+
+    radial-gradient(
+        circle at center,
+        rgba(255,70,130,.12),
+        rgba(255,255,255,.02)
+    );
+
     border:
     1px solid
-    rgba(255,255,255,.15);
-
-    background:
-    rgba(255,255,255,.03);
+    rgba(255,255,255,.12);
 
 }
 
 
-.falling-heart{
+.moving-heart{
 
     position:absolute;
 
-    font-size:30px;
+    width:70px;
+
+    height:70px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:
+    rgba(255,70,130,.15);
+
+    font-size:35px;
 
     cursor:pointer;
 
-    animation:
-    fall
-    3s
-    linear
-    forwards;
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    transition:
+    left .25s ease,
+    top .25s ease,
+    transform .2s ease;
+
+    box-shadow:
+    0 0 25px
+    rgba(255,70,130,.25);
 
 }
 
 
-@keyframes fall{
+.moving-heart:hover{
 
-    from{
+    transform:scale(1.15);
 
-        top:-50px;
+}
 
-    }
 
-    to{
+.catch-message{
 
-        top:450px;
+    margin-top:20px;
 
-    }
+    color:#ff759f;
+
+    min-height:25px;
 
 }
 
@@ -685,6 +715,16 @@ button{
     padding-top:80px;
 
     padding-bottom:80px;
+
+}
+
+
+.section-title{
+
+    font-size:
+    clamp(40px,8vw,70px);
+
+    margin-bottom:10px;
 
 }
 
@@ -896,7 +936,7 @@ button{
 
 
 /* =========================================
-   LOVE
+   FINAL LOVE PAGE
 ========================================= */
 
 #love{
@@ -967,7 +1007,7 @@ button{
     }
 
 
-    .heart-area{
+    .catch-area{
 
         height:350px;
 
