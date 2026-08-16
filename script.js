@@ -112,6 +112,11 @@ function startMusic(){
 }
 
 
+
+/* =========================================
+   MUSIC BUTTON
+========================================= */
+
 function toggleMusic(){
 
     if(!musicPlaying){
@@ -197,50 +202,55 @@ function correct1(){
 
 
 /* =========================================
-   GAME 2
+   GAME 2 - CATCH MY HEART
 ========================================= */
 
-let score = 0;
+let catchScore = 0;
 
-let heartGameRunning = false;
+let catchGameRunning = false;
 
 
 function startHeartGame(){
 
-    score = 0;
+    catchScore = 0;
+
+    catchGameRunning = true;
+
 
     document.getElementById(
-        "score"
-    ).innerText = score;
+        "catchScore"
+    ).innerText = catchScore;
 
 
-    heartGameRunning = true;
+    document.getElementById(
+        "catchMessage"
+    ).innerText =
+        "Catch the heart! ❤️";
 
-    spawnHeart();
+
+    const heart =
+        document.getElementById(
+            "movingHeart"
+        );
+
+
+    heart.style.display =
+        "flex";
+
+
+    moveHeart();
 
 }
 
 
-function spawnHeart(){
 
-    if(!heartGameRunning){
+/* =========================================
+   MOVE HEART
+========================================= */
 
-        return;
+function moveHeart(){
 
-    }
-
-
-    if(score >= 10){
-
-        heartGameRunning = false;
-
-
-        setTimeout(function(){
-
-            nextPage("game3");
-
-        },500);
-
+    if(!catchGameRunning){
 
         return;
 
@@ -249,61 +259,113 @@ function spawnHeart(){
 
     const area =
         document.getElementById(
-            "heartArea"
+            "catchArea"
         );
 
 
     const heart =
-        document.createElement(
-            "div"
+        document.getElementById(
+            "movingHeart"
         );
 
 
-    heart.className =
-        "falling-heart";
+    const heartSize = 70;
 
 
-    heart.innerHTML =
-        "❤️";
+    const maxX =
+        area.clientWidth -
+        heartSize;
+
+
+    const maxY =
+        area.clientHeight -
+        heartSize;
+
+
+    const randomX =
+        Math.floor(
+            Math.random() * maxX
+        );
+
+
+    const randomY =
+        Math.floor(
+            Math.random() * maxY
+        );
 
 
     heart.style.left =
-        Math.random() * 90 + "%";
+        randomX + "px";
 
 
-    heart.onclick =
-        function(){
+    heart.style.top =
+        randomY + "px";
 
-            score++;
-
-
-            document.getElementById(
-                "score"
-            ).innerText = score;
+}
 
 
-            heart.remove();
+
+/* =========================================
+   CATCH HEART
+========================================= */
+
+function catchHeart(){
+
+    if(!catchGameRunning){
+
+        return;
+
+    }
 
 
-            spawnHeart();
-
-        };
+    catchScore++;
 
 
-    area.appendChild(heart);
+    document.getElementById(
+        "catchScore"
+    ).innerText =
+        catchScore;
 
 
-    setTimeout(function(){
+    createHeartExplosion();
 
-        if(heart.parentElement){
 
-            heart.remove();
+    if(catchScore >= 5){
 
-            spawnHeart();
+        catchGameRunning = false;
 
-        }
 
-    },3000);
+        document.getElementById(
+            "catchMessage"
+        ).innerText =
+            "You caught my heart! ❤️";
+
+
+        document.getElementById(
+            "movingHeart"
+        ).style.display =
+            "none";
+
+
+        setTimeout(function(){
+
+            nextPage("game3");
+
+        },1200);
+
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "catchMessage"
+    ).innerText =
+        "Got me! But I'm running again 😏❤️";
+
+
+    moveHeart();
 
 }
 
