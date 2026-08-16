@@ -1,486 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Happy Birthday ❤️</title>
+    <meta charset="UTF-8">
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+    <title>Happy Birthday ❤️</title>
 
-html{
-    scroll-behavior:smooth;
-}
+    <link rel="stylesheet" href="style.css">
 
-body{
-    font-family:'Poppins',sans-serif;
-    background:#070007;
-    color:white;
-    overflow-x:hidden;
-}
-
-button{
-    font-family:inherit;
-}
-
-.page{
-    min-height:100vh;
-    width:100%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:30px 20px;
-    position:relative;
-}
-
-.content{
-    width:100%;
-    max-width:900px;
-    position:relative;
-    z-index:5;
-}
-
-.hidden{
-    display:none!important;
-}
-
-.script{
-    font-family:'Dancing Script',cursive;
-}
-
-.btn{
-    margin-top:30px;
-    padding:15px 32px;
-    border:none;
-    border-radius:50px;
-    background:linear-gradient(135deg,#ff3977,#ff719c);
-    color:white;
-    font-size:16px;
-    font-weight:600;
-    cursor:pointer;
-    box-shadow:0 10px 30px rgba(255,55,110,.3);
-    transition:.3s;
-}
-
-.btn:hover{
-    transform:scale(1.07);
-}
-
-/* MUSIC */
-
-.music-btn{
-    position:fixed;
-    right:18px;
-    top:18px;
-    width:48px;
-    height:48px;
-    border-radius:50%;
-    border:1px solid rgba(255,255,255,.3);
-    background:rgba(0,0,0,.5);
-    color:white;
-    font-size:20px;
-    z-index:9999;
-    cursor:pointer;
-    backdrop-filter:blur(10px);
-}
-
-/* Hidden YouTube player */
-
-#youtube-player{
-    position:fixed;
-    width:1px;
-    height:1px;
-    left:-10px;
-    top:-10px;
-    opacity:0;
-    pointer-events:none;
-}
-
-/* HEARTS */
-
-.heart{
-    position:fixed;
-    bottom:-40px;
-    pointer-events:none;
-    z-index:1000;
-    animation:floatHeart linear forwards;
-}
-
-@keyframes floatHeart{
-    0%{
-        transform:translateY(0) scale(.7) rotate(0);
-        opacity:1;
-    }
-
-    100%{
-        transform:translateY(-110vh) scale(1.4) rotate(360deg);
-        opacity:0;
-    }
-}
-
-/* OPENING */
-
-#opening{
-    background:
-    radial-gradient(circle at center,rgba(150,0,70,.4),transparent 45%),
-    linear-gradient(135deg,#070007,#1b000f,#070007);
-}
-
-.opening-small{
-    font-size:14px;
-    letter-spacing:4px;
-    text-transform:uppercase;
-    opacity:.65;
-}
-
-.opening-title{
-    font-size:clamp(55px,12vw,110px);
-    line-height:.9;
-    margin:25px 0;
-}
-
-.opening-title span{
-    color:#ff5b91;
-}
-
-.opening-text{
-    max-width:600px;
-    margin:auto;
-    font-size:17px;
-    line-height:1.9;
-    opacity:.85;
-}
-
-/* BIRTHDAY */
-
-#birthday{
-    background:
-    radial-gradient(circle at 50% 15%,#55002b,transparent 45%),
-    #090009;
-}
-
-.cake{
-    font-size:90px;
-    animation:floatCake 2s infinite ease-in-out;
-}
-
-@keyframes floatCake{
-    50%{
-        transform:translateY(-12px);
-    }
-}
-
-.birthday-title{
-    font-size:clamp(45px,10vw,90px);
-    line-height:1;
-    margin:20px 0;
-}
-
-.birthday-title span{
-    color:#ff5b91;
-    font-family:'Dancing Script',cursive;
-}
-
-.birthday-text{
-    max-width:700px;
-    margin:auto;
-    line-height:1.9;
-    font-size:17px;
-    opacity:.85;
-}
-
-/* GAMES INTRO */
-
-#gamesIntro{
-    background:linear-gradient(135deg,#12000c,#300017,#0d0008);
-}
-
-.games-title{
-    font-size:clamp(45px,9vw,80px);
-}
-
-.games-text{
-    max-width:650px;
-    margin:20px auto;
-    line-height:1.9;
-    opacity:.8;
-}
-
-/* GAME 1 */
-
-#game1,
-#game3{
-    background:#080008;
-}
-
-.game-box{
-    width:100%;
-    max-width:700px;
-    padding:35px 25px;
-    border-radius:30px;
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.1);
-    backdrop-filter:blur(15px);
-}
-
-.game-number{
-    color:#ff5c91;
-    letter-spacing:3px;
-    font-size:13px;
-}
-
-.question{
-    font-size:clamp(25px,5vw,40px);
-    margin:20px 0 30px;
-}
-
-.answers{
-    display:grid;
-    gap:14px;
-}
-
-.answer{
-    padding:15px;
-    border-radius:15px;
-    border:1px solid rgba(255,255,255,.15);
-    background:rgba(255,255,255,.05);
-    color:white;
-    cursor:pointer;
-    font-size:15px;
-    transition:.3s;
-}
-
-.answer:hover{
-    background:rgba(255,90,145,.2);
-    transform:translateY(-3px);
-}
-
-.result{
-    margin-top:25px;
-    min-height:25px;
-    color:#ff759f;
-}
-
-/* HEART GAME */
-
-#heartGame{
-    background:radial-gradient(circle,#35001d,#080008 65%);
-}
-
-.heart-area{
-    height:400px;
-    max-width:700px;
-    margin:20px auto 0;
-    position:relative;
-    overflow:hidden;
-    border-radius:25px;
-    border:1px solid rgba(255,255,255,.15);
-    background:rgba(255,255,255,.03);
-}
-
-.score{
-    margin:15px;
-    font-size:21px;
-    color:#ff6b98;
-}
-
-.falling-heart{
-    position:absolute;
-    font-size:30px;
-    cursor:pointer;
-    animation:fall 3s linear forwards;
-}
-
-@keyframes fall{
-    from{
-        top:-50px;
-    }
-
-    to{
-        top:450px;
-    }
-}
-
-/* GIFT */
-
-#gift{
-    background:
-    radial-gradient(circle,#520022,transparent 50%),
-    #080008;
-}
-
-.gift{
-    font-size:120px;
-    cursor:pointer;
-    animation:bounceGift 1.5s infinite;
-}
-
-@keyframes bounceGift{
-    50%{
-        transform:translateY(-18px);
-    }
-}
-
-.gift-title{
-    font-size:clamp(38px,8vw,70px);
-}
-
-/* PHOTOS */
-
-#photos{
-    background:#080808;
-    display:block;
-    padding-top:80px;
-    padding-bottom:80px;
-}
-
-.section-title{
-    font-size:clamp(40px,8vw,70px);
-    margin-bottom:10px;
-}
-
-.section-subtitle{
-    opacity:.65;
-    margin-bottom:45px;
-}
-
-.gallery{
-    max-width:900px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:20px;
-}
-
-.photo-card{
-    height:390px;
-    border-radius:25px;
-    overflow:hidden;
-    position:relative;
-    background:#151515;
-}
-
-.photo-card img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    transition:.6s;
-}
-
-.photo-card:hover img{
-    transform:scale(1.08);
-}
-
-/* MESSAGE */
-
-#message{
-    background:
-    linear-gradient(rgba(5,0,5,.7),rgba(5,0,5,.9)),
-    url("pic3.jpg") center/cover fixed;
-}
-
-.letter{
-    max-width:760px;
-    padding:45px 30px;
-    border-radius:30px;
-    background:rgba(0,0,0,.45);
-    border:1px solid rgba(255,255,255,.15);
-    backdrop-filter:blur(10px);
-}
-
-.letter h2{
-    font-family:'Dancing Script',cursive;
-    font-size:clamp(48px,9vw,75px);
-    color:#ff6495;
-    margin-bottom:25px;
-}
-
-.letter p{
-    font-size:17px;
-    line-height:2;
-    opacity:.9;
-}
-
-/* FINAL SURPRISE */
-
-#finalSurprise{
-    background:
-    radial-gradient(circle,#65002d,#15000d 55%,#050005);
-}
-
-.surprise-title{
-    font-size:clamp(42px,8vw,75px);
-}
-
-.final-hidden{
-    margin-top:40px;
-}
-
-.final-hidden h2{
-    font-family:'Dancing Script',cursive;
-    color:#ff5c91;
-    font-size:clamp(60px,12vw,110px);
-}
-
-.final-hidden p{
-    max-width:700px;
-    margin:20px auto;
-    line-height:2;
-    font-size:18px;
-}
-
-/* LOVE */
-
-#love{
-    background:
-    linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.85)),
-    url("pic6.jpg") center/cover;
-}
-
-.love-title{
-    font-family:'Dancing Script',cursive;
-    font-size:clamp(75px,16vw,160px);
-    line-height:.85;
-    color:#ff5d91;
-    text-shadow:0 0 40px rgba(255,70,130,.5);
-}
-
-.love-text{
-    max-width:750px;
-    margin:35px auto;
-    font-size:19px;
-    line-height:2;
-}
-
-/* MOBILE */
-
-@media(max-width:650px){
-
-    .gallery{
-        grid-template-columns:1fr;
-    }
-
-    .photo-card{
-        height:430px;
-    }
-
-    .heart-area{
-        height:350px;
-    }
-
-    .letter{
-        padding:35px 20px;
-    }
-}
-</style>
 </head>
 
 
@@ -490,597 +23,782 @@ button{
 <!-- MUSIC BUTTON -->
 
 <button
-    class="music-btn"
     id="musicButton"
-    onclick="toggleMusic()">
+    class="music-btn"
+    onclick="toggleMusic()"
+>
     🎵
 </button>
 
 
-<!-- YOUTUBE MUSIC PLAYER -->
+<!-- =========================================
+     OPENING
+========================================= -->
 
-<div id="youtube-player"></div>
+<section
+    id="opening"
+    class="page active"
+>
+
+    <div class="content">
+
+        <p class="opening-small">
+            I made something just for you...
+        </p>
+
+        <h1 class="opening-title script">
+
+            Hey You...
+
+            <span>❤️</span>
+
+        </h1>
+
+        <p class="opening-text">
+
+            Before you start...
+
+            this isn't just another
+            birthday wish.
+
+            <br><br>
+
+            I wanted to make something
+            that could hold a few memories,
+            a few smiles,
+            and a whole lot of love.
+
+            <br><br>
+
+            So...
+
+            let's begin. ❤️
+
+        </p>
 
 
-<!-- =================================================
-     1. OPENING
-================================================= -->
+        <button
+            class="btn"
+            onclick="startExperience()"
+        >
 
-<section class="page" id="opening">
+            Start Your Surprise ❤️
 
-<div class="content">
+        </button>
 
-    <div class="opening-small">
-        I made something just for you...
     </div>
-
-    <h1 class="opening-title script">
-
-        Hey You...
-
-        <span>❤️</span>
-
-    </h1>
-
-    <p class="opening-text">
-
-        Before you start...
-
-        this isn't just another birthday wish.
-
-        <br><br>
-
-        I wanted to make something
-        that could hold a few memories,
-        a few smiles,
-        and a whole lot of love.
-
-        <br><br>
-
-        So...
-
-        let's begin. ❤️
-
-    </p>
-
-    <button
-        class="btn"
-        onclick="startExperience()">
-
-        Start Your Surprise ❤️
-
-    </button>
-
-</div>
 
 </section>
 
 
-<!-- =================================================
-     2. HAPPY BIRTHDAY
-================================================= -->
+
+<!-- =========================================
+     HAPPY BIRTHDAY
+========================================= -->
 
 <section
-    class="page hidden"
-    id="birthday">
+    id="birthday"
+    class="page"
+>
 
-<div class="content">
+    <div class="content">
 
-    <div class="cake">
-        🎂
+        <div class="cake">
+            🎂
+        </div>
+
+
+        <h1 class="birthday-title">
+
+            HAPPY BIRTHDAY
+
+            <br>
+
+            <span>My Love ❤️</span>
+
+        </h1>
+
+
+        <p class="birthday-text">
+
+            Today is your day.
+
+            <br><br>
+
+            Your smile.
+            Your laugh.
+            Your little nakhres.
+            Your craziness.
+            Everything that makes you...
+
+            <br>
+
+            <strong>YOU.</strong>
+
+            <br><br>
+
+            And because a simple
+            "Happy Birthday"
+            could never be enough...
+
+            I made this little surprise
+            for you. ❤️
+
+        </p>
+
+
+        <button
+            class="btn"
+            onclick="nextPage('gamesIntro')"
+        >
+
+            There's Something Waiting 🎮
+
+        </button>
+
     </div>
-
-    <h1 class="birthday-title">
-
-        HAPPY BIRTHDAY
-
-        <br>
-
-        <span>My Love ❤️</span>
-
-    </h1>
-
-    <p class="birthday-text">
-
-        Today is your day.
-
-        <br><br>
-
-        Your smile.
-        Your laugh.
-        Your little nakhres.
-        Your craziness.
-        Everything that makes you...
-
-        <br>
-
-        <strong>YOU.</strong>
-
-        <br><br>
-
-        And because a simple
-        "Happy Birthday"
-        could never be enough...
-
-        I made this little surprise for you. ❤️
-
-    </p>
-
-    <button
-        class="btn"
-        onclick="nextPage('gamesIntro')">
-
-        There's Something Waiting 🎮
-
-    </button>
-
-</div>
 
 </section>
 
 
-<!-- =================================================
-     3. GAMES INTRO
-================================================= -->
+
+<!-- =========================================
+     GAMES INTRO
+========================================= -->
 
 <section
-    class="page hidden"
-    id="gamesIntro">
+    id="gamesIntro"
+    class="page"
+>
 
-<div class="content">
+    <div class="content">
 
-    <h1 class="games-title script">
+        <h1 class="games-title script">
 
-        Okay...
+            Okay...
 
-        <br>
+            <br>
 
-        Time To Play 😏
+            Time To Play 😏
 
-    </h1>
+        </h1>
 
-    <p class="games-text">
 
-        Before you get your gift,
-        you have to complete
-        three little challenges.
+        <p class="games-text">
 
-        <br><br>
+            Before you get your gift,
+            you have to complete
+            three little challenges.
 
-        Don't worry...
+            <br><br>
 
-        I made them especially for you. ❤️
+            Don't worry...
 
-    </p>
+            I made them especially
+            for you. ❤️
 
-    <button
-        class="btn"
-        onclick="nextPage('game1')">
+        </p>
 
-        Let's Play 🎮
 
-    </button>
+        <button
+            class="btn"
+            onclick="nextPage('game1')"
+        >
 
-</div>
+            Let's Play 🎮
+
+        </button>
+
+    </div>
 
 </section>
 
 
-<!-- =================================================
-     4. GAME 1
-================================================= -->
+
+<!-- =========================================
+     GAME 1
+========================================= -->
 
 <section
-    class="page hidden"
-    id="game1">
+    id="game1"
+    class="page"
+>
 
-<div class="game-box">
+    <div class="game-box">
 
-    <div class="game-number">
-        GAME 1 / 3
+        <div class="game-number">
+            GAME 1 / 3
+        </div>
+
+
+        <div class="question">
+
+            What do I love the most?
+
+        </div>
+
+
+        <div class="answers">
+
+            <button
+                class="answer"
+                onclick="wrong1()"
+            >
+                Food 🍕
+            </button>
+
+
+            <button
+                class="answer"
+                onclick="wrong1()"
+            >
+                Sleep 😴
+            </button>
+
+
+            <button
+                class="answer"
+                onclick="correct1()"
+            >
+                You ❤️
+            </button>
+
+
+            <button
+                class="answer"
+                onclick="wrong1()"
+            >
+                My Bike 🏍️
+            </button>
+
+        </div>
+
+
+        <div
+            id="result1"
+            class="result"
+        ></div>
+
     </div>
-
-    <div class="question">
-
-        What do I love the most?
-
-    </div>
-
-    <div class="answers">
-
-        <button
-            class="answer"
-            onclick="wrong1()">
-
-            Food 🍕
-        </button>
-
-        <button
-            class="answer"
-            onclick="wrong1()">
-
-            Sleep 😴
-        </button>
-
-        <button
-            class="answer"
-            onclick="correct1()">
-
-            You ❤️
-        </button>
-
-        <button
-            class="answer"
-            onclick="wrong1()">
-
-            My Bike 🏍️
-        </button>
-
-    </div>
-
-    <div
-        class="result"
-        id="result1">
-    </div>
-
-</div>
 
 </section>
 
 
-<!-- =================================================
-     5. GAME 2
-================================================= -->
+
+<!-- =========================================
+     GAME 2
+========================================= -->
 
 <section
-    class="page hidden"
-    id="heartGame">
+    id="heartGame"
+    class="page"
+>
 
-<div class="content">
+    <div class="content">
 
-    <div class="game-number">
-        GAME 2 / 3
-    </div>
-
-    <h2 class="section-title">
-        Catch My Hearts ❤️
-    </h2>
-
-    <p>
-        Catch 10 hearts!
-    </p>
-
-    <div class="score">
-
-        ❤️
-        <span id="score">0</span>
-        / 10
-
-    </div>
-
-    <div
-        class="heart-area"
-        id="heartArea">
-    </div>
-
-</div>
-
-</section>
+        <div class="game-number">
+            GAME 2 / 3
+        </div>
 
 
-<!-- =================================================
-     6. GAME 3
-================================================= -->
+        <h2 class="section-title">
 
-<section
-    class="page hidden"
-    id="game3">
+            Catch My Hearts ❤️
 
-<div class="game-box">
+        </h2>
 
-    <div class="game-number">
-        GAME 3 / 3
-    </div>
 
-    <div class="question">
+        <p>
+            Catch 10 hearts!
+        </p>
 
-        Which heart belongs to you? ❤️
 
-    </div>
-
-    <div class="answers">
-
-        <button
-            class="answer"
-            onclick="wrong3()">
-
-            💙
-        </button>
-
-        <button
-            class="answer"
-            onclick="wrong3()">
-
-            💜
-        </button>
-
-        <button
-            class="answer"
-            onclick="wrong3()">
-
-            💛
-        </button>
-
-        <button
-            class="answer"
-            onclick="correct3()">
+        <div class="score">
 
             ❤️
+            <span id="score">0</span>
+            / 10
+
+        </div>
+
+
+        <div
+            id="heartArea"
+            class="heart-area"
+        ></div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     GAME 3
+========================================= -->
+
+<section
+    id="game3"
+    class="page"
+>
+
+    <div class="game-box">
+
+        <div class="game-number">
+            GAME 3 / 3
+        </div>
+
+
+        <div class="question">
+
+            Which heart belongs to you? ❤️
+
+        </div>
+
+
+        <div class="answers">
+
+            <button
+                class="answer"
+                onclick="wrong3()"
+            >
+                💙
+            </button>
+
+
+            <button
+                class="answer"
+                onclick="wrong3()"
+            >
+                💜
+            </button>
+
+
+            <button
+                class="answer"
+                onclick="wrong3()"
+            >
+                💛
+            </button>
+
+
+            <button
+                class="answer"
+                onclick="correct3()"
+            >
+                ❤️
+            </button>
+
+        </div>
+
+
+        <div
+            id="result3"
+            class="result"
+        ></div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     GIFT
+========================================= -->
+
+<section
+    id="gift"
+    class="page"
+>
+
+    <div class="content">
+
+        <h1 class="gift-title">
+
+            You Passed! 🥹
+
+        </h1>
+
+
+        <p class="gift-text">
+
+            Okayyy...
+
+            You earned your gift.
+
+            <br><br>
+
+            But there's a tiny problem...
+
+            <br>
+
+            You have to open it yourself. 👀
+
+        </p>
+
+
+        <div
+            id="giftBox"
+            class="gift"
+            onclick="openGift()"
+        >
+
+            🎁
+
+        </div>
+
+
+        <p>
+            Tap the gift ❤️
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     PHOTOS
+========================================= -->
+
+<section
+    id="photos"
+    class="page"
+>
+
+    <div class="content">
+
+        <h1 class="section-title script">
+
+            Our Little Memories 📸
+
+        </h1>
+
+
+        <p class="section-subtitle">
+
+            Six pictures...
+
+            countless memories. ❤️
+
+        </p>
+
+
+        <div class="gallery">
+
+            <div class="photo-card">
+                <img src="pic1.jpg">
+            </div>
+
+            <div class="photo-card">
+                <img src="pic2.jpg">
+            </div>
+
+            <div class="photo-card">
+                <img src="pic3.jpg">
+            </div>
+
+            <div class="photo-card">
+                <img src="pic4.jpg">
+            </div>
+
+            <div class="photo-card">
+                <img src="pic5.jpg">
+            </div>
+
+            <div class="photo-card">
+                <img src="pic6.jpg">
+            </div>
+
+        </div>
+
+
+        <button
+            class="btn"
+            onclick="nextPage('message')"
+        >
+
+            Something I Want To Tell You 💌
+
         </button>
 
     </div>
 
-    <div
-        class="result"
-        id="result3">
-    </div>
-
-</div>
-
 </section>
 
 
-<!-- =================================================
-     7. GIFT
-================================================= -->
+
+<!-- =========================================
+     BIRTHDAY MESSAGE
+========================================= -->
 
 <section
-    class="page hidden"
-    id="gift">
+    id="message"
+    class="page"
+>
 
-<div class="content">
+    <div class="letter">
 
-    <h1 class="gift-title">
-
-        You Passed! 🥹
-
-    </h1>
-
-    <p style="margin-top:20px;line-height:1.8;">
-
-        Okayyy...
-
-        You earned your gift.
-
-        <br><br>
-
-        But there's a tiny problem...
-
-        <br>
-
-        You have to open it yourself. 👀
-
-    </p>
-
-    <div
-        class="gift"
-        id="giftBox"
-        onclick="openGift()">
-
-        🎁
-
-    </div>
-
-    <p>
-        Tap the gift ❤️
-    </p>
-
-</div>
-
-</section>
+        <h2>
+            A Letter For You 💌
+        </h2>
 
 
-<!-- =================================================
-     8. PHOTOS
-================================================= -->
+        <p>
 
-<section
-    class="page hidden"
-    id="photos">
+            Happy Birthday to the person
+            who became one of the most
+            important parts of my life. ❤️
 
-<div class="content">
+            <br><br>
 
-    <h1 class="section-title script">
+            I honestly don't know how to
+            put everything I feel for you
+            into words.
 
-        Our Little Memories 📸
+            <br><br>
 
-    </h1>
+            Somehow you became such a big
+            part of my life that my days
+            don't feel quite the same
+            without you.
 
-    <p class="section-subtitle">
+            <br><br>
 
-        Six pictures...
+            I love our random conversations.
 
-        countless memories. ❤️
+            <br>
 
-    </p>
+            I love our stupid fights.
 
-    <div class="gallery">
+            <br>
 
-        <div class="photo-card">
-            <img src="pic1.jpg">
-        </div>
+            I love your little nakhres.
 
-        <div class="photo-card">
-            <img src="pic2.jpg">
-        </div>
+            <br>
 
-        <div class="photo-card">
-            <img src="pic3.jpg">
-        </div>
+            I love making you laugh.
 
-        <div class="photo-card">
-            <img src="pic4.jpg">
-        </div>
+            <br>
 
-        <div class="photo-card">
-            <img src="pic5.jpg">
-        </div>
+            I love seeing you happy.
 
-        <div class="photo-card">
-            <img src="pic6.jpg">
-        </div>
+            <br><br>
+
+            And most importantly...
+
+            <br>
+
+            I love <strong>US.</strong>
+
+            <br><br>
+
+            On your birthday,
+            I just want you to know
+            that I hope you get everything
+            you dream of.
+
+            <br><br>
+
+            Keep smiling.
+
+            Keep being the beautiful,
+            crazy and amazing person
+            you are.
+
+            <br><br>
+
+            And selfishly...
+
+            I hope I get to celebrate
+            many more birthdays with you. ❤️
+
+        </p>
+
+
+        <button
+            class="btn"
+            onclick="nextPage('finalSurprise')"
+        >
+
+            One Last Surprise ✨
+
+        </button>
 
     </div>
 
-    <button
-        class="btn"
-        onclick="nextPage('message')">
+</section>
 
-        Something I Want To Tell You 💌
 
-    </button>
 
-</div>
+<!-- =========================================
+     FINAL SURPRISE
+========================================= -->
+
+<section
+    id="finalSurprise"
+    class="page"
+>
+
+    <div class="content">
+
+        <h1 class="surprise-title script">
+
+            Think We're Done?
+
+        </h1>
+
+
+        <p class="surprise-text">
+
+            Nope. 😏
+
+            <br><br>
+
+            There's still one thing
+            I want you to see.
+
+        </p>
+
+
+        <button
+            class="btn"
+            onclick="revealFinal()"
+        >
+
+            One Last Surprise ❤️
+
+        </button>
+
+
+        <div
+            id="finalHidden"
+            class="final-hidden"
+        >
+
+            <h2>
+                It's You. ❤️
+            </h2>
+
+
+            <p>
+
+                Out of everything in this world,
+
+                my favourite thing will always
+                be the fact that I found you.
+
+                <br><br>
+
+                No expensive gift could ever
+                explain what you mean to me.
+
+                <br><br>
+
+                So here's my little promise...
+
+                I'll keep choosing you,
+                caring for you,
+                annoying you,
+                making you laugh,
+
+                and loving you.
+
+            </p>
+
+
+            <button
+                class="btn"
+                onclick="nextPage('love')"
+            >
+
+                Continue ❤️
+
+            </button>
+
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- =================================================
-     9. BIRTHDAY MESSAGE
-================================================= -->
+
+<!-- =========================================
+     FINAL LOVE PAGE
+========================================= -->
 
 <section
-    class="page hidden"
-    id="message">
+    id="love"
+    class="page"
+>
 
-<div class="letter">
+    <div class="content">
 
-    <h2>
-        A Letter For You 💌
-    </h2>
+        <h1 class="love-title">
 
-    <p>
+            I Love You
 
-        Happy Birthday to the person
-        who became one of the most
-        important parts of my life. ❤️
+            <br>
 
-        <br><br>
+            ❤️
 
-        I honestly don't know how to
-        put everything I feel for you
-        into words.
+        </h1>
 
-        <br><br>
 
-        Somehow you became such a big
-        part of my life that my days
-        don't feel quite the same
-        without you.
+        <p class="love-text">
 
-        <br><br>
+            Happy Birthday, my love.
 
-        I love our random conversations.
+            <br><br>
 
-        <br>
+            Thank you for being you.
 
-        I love our stupid fights.
+            <br>
 
-        <br>
+            Thank you for every smile,
+            every memory,
+            every little moment,
+            every conversation,
+            every laugh...
 
-        I love your little nakhres.
+            <br><br>
 
-        <br>
+            You are one of the most
+            beautiful chapters of my life.
 
-        I love making you laugh.
+            <br><br>
 
-        <br>
+            And I hope this isn't the end
+            of our story...
 
-        I love seeing you happy.
+            <br>
 
-        <br><br>
+            but just another beautiful
+            page in it.
 
-        And most importantly...
+            <br><br>
 
-        <br>
+            <strong>
+                I LOVE YOU ❤️
+            </strong>
 
-        I love <strong>US.</strong>
+            <br><br>
 
-        <br><br>
+            Happy Birthday, beautiful. 🎂❤️
 
-        On your birthday,
-        I just want you to know
-        that I hope you get everything
-        you dream of.
+        </p>
 
-        <br><br>
-
-        Keep smiling.
-
-        Keep being the beautiful,
-        crazy and amazing person
-        you are.
-
-        <br><br>
-
-        And selfishly...
-
-        I hope I get to celebrate
-        many more birthdays with you. ❤️
-
-    </p>
-
-    <button
-        class="btn"
-        onclick="nextPage('finalSurprise')">
-
-        One Last Surprise ✨
-
-    </button>
-
-</div>
+    </div>
 
 </section>
 
 
-<!-- =================================================
-     10. FINAL SURPRISE
-================================================= -->
 
-<section
-    class="page hidden"
-    id="finalSurprise">
+<script src="script.js"></script>
 
-<div class="content">
+</body>
 
-    <h1 class="surprise-title script">
-
-        Think We're Done?
-
-    </h1>
-
-    <p style="margin-top:20px;line-height:1.8;opacity:.8;">
-
-        Nope. 😏
-
-        <br><br>
-
-        There's still one thing
-        I want you to see.
-
-    </p>
-
-    <button
-        class="btn"
-        onclick="revealFinal()">
-
-        One Last Surprise ❤️
-
-    </button>
-
-
-    <div
-        class="final-hidden hidden"
-        id="finalHidden">
-
-        <
+</html>
