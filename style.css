@@ -15,7 +15,7 @@ html{
 
 body{
     font-family:'Poppins',sans-serif;
-    background:#070007;
+    background:#050005;
     color:white;
     overflow-x:hidden;
 }
@@ -25,10 +25,6 @@ button{
     font-family:inherit;
 }
 
-
-/* =========================================
-   PAGES
-========================================= */
 
 .page{
 
@@ -44,37 +40,30 @@ button{
 
     text-align:center;
 
-    padding:30px 20px;
+    padding:35px 20px;
 
     position:relative;
+
+    overflow:hidden;
 
 }
 
 
 .page.active{
-
     display:flex;
-
 }
 
 
 .content{
-
     width:100%;
-
     max-width:900px;
-
     position:relative;
-
     z-index:5;
-
 }
 
 
 .script{
-
     font-family:'Dancing Script',cursive;
-
 }
 
 
@@ -95,9 +84,12 @@ button{
     background:
     linear-gradient(
         135deg,
-        #ff3977,
-        #ff719c
+        #ff2870,
+        #ff5f9b,
+        #b62cff
     );
+
+    background-size:200% 200%;
 
     color:white;
 
@@ -108,103 +100,36 @@ button{
     cursor:pointer;
 
     box-shadow:
-    0 10px 30px
-    rgba(255,55,110,.3);
+    0 10px 35px
+    rgba(255,40,120,.35);
 
-    transition:.3s;
+    transition:.35s;
+
+    animation:
+    buttonGlow
+    4s
+    infinite;
 
 }
 
 
 .btn:hover{
 
-    transform:scale(1.07);
+    transform:
+    translateY(-3px)
+    scale(1.05);
 
 }
 
 
-/* =========================================
-   MUSIC
-========================================= */
+@keyframes buttonGlow{
 
-.music-btn{
-
-    position:fixed;
-
-    right:18px;
-
-    top:18px;
-
-    width:48px;
-
-    height:48px;
-
-    border-radius:50%;
-
-    border:
-    1px solid
-    rgba(255,255,255,.3);
-
-    background:
-    rgba(0,0,0,.5);
-
-    color:white;
-
-    font-size:20px;
-
-    z-index:9999;
-
-    cursor:pointer;
-
-    backdrop-filter:blur(10px);
-
-}
-
-
-/* =========================================
-   FLOATING HEARTS
-========================================= */
-
-.heart{
-
-    position:fixed;
-
-    bottom:-40px;
-
-    pointer-events:none;
-
-    z-index:1000;
-
-    animation:
-    floatHeart
-    linear
-    forwards;
-
-}
-
-
-@keyframes floatHeart{
-
-    0%{
-
-        transform:
-        translateY(0)
-        scale(.7)
-        rotate(0);
-
-        opacity:1;
-
+    0%,100%{
+        background-position:0% 50%;
     }
 
-    100%{
-
-        transform:
-        translateY(-110vh)
-        scale(1.4)
-        rotate(360deg);
-
-        opacity:0;
-
+    50%{
+        background-position:100% 50%;
     }
 
 }
@@ -217,19 +142,72 @@ button{
 #opening{
 
     background:
+    radial-gradient(
+        circle at 20% 20%,
+        rgba(255,0,110,.35),
+        transparent 30%
+    ),
 
     radial-gradient(
-        circle at center,
-        rgba(150,0,70,.4),
-        transparent 45%
+        circle at 80% 70%,
+        rgba(130,0,255,.35),
+        transparent 30%
     ),
 
     linear-gradient(
         135deg,
-        #070007,
-        #1b000f,
-        #070007
+        #090009,
+        #30001c,
+        #100020,
+        #090009
     );
+
+}
+
+
+#opening::before,
+#birthday::before,
+#gamesIntro::before,
+#heartGame::before,
+#gift::before,
+#finalSurprise::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:450px;
+
+    height:450px;
+
+    border-radius:50%;
+
+    background:
+    rgba(255,40,130,.12);
+
+    filter:blur(80px);
+
+    animation:
+    backgroundFloat
+    8s
+    infinite alternate;
+
+}
+
+
+@keyframes backgroundFloat{
+
+    from{
+        transform:
+        translate(-100px,-50px)
+        scale(1);
+    }
+
+    to{
+        transform:
+        translate(100px,70px)
+        scale(1.4);
+    }
 
 }
 
@@ -242,7 +220,7 @@ button{
 
     text-transform:uppercase;
 
-    opacity:.65;
+    opacity:.7;
 
 }
 
@@ -256,6 +234,10 @@ button{
 
     margin:25px 0;
 
+    text-shadow:
+    0 0 35px
+    rgba(255,60,140,.3);
+
 }
 
 
@@ -263,14 +245,14 @@ button{
 
     display:block;
 
-    color:#ff5b91;
+    color:#ff5c91;
 
 }
 
 
 .opening-text{
 
-    max-width:600px;
+    max-width:650px;
 
     margin:auto;
 
@@ -278,7 +260,7 @@ button{
 
     line-height:1.9;
 
-    opacity:.85;
+    opacity:.88;
 
 }
 
@@ -292,12 +274,24 @@ button{
     background:
 
     radial-gradient(
-        circle at 50% 15%,
-        #55002b,
-        transparent 45%
+        circle at 20% 20%,
+        rgba(255,0,100,.4),
+        transparent 30%
     ),
 
-    #090009;
+    radial-gradient(
+        circle at 80% 80%,
+        rgba(120,0,255,.4),
+        transparent 35%
+    ),
+
+    linear-gradient(
+        135deg,
+        #16000e,
+        #4b0028,
+        #1b0035,
+        #080008
+    );
 
 }
 
@@ -318,10 +312,9 @@ button{
 @keyframes floatCake{
 
     50%{
-
         transform:
-        translateY(-12px);
-
+        translateY(-15px)
+        rotate(3deg);
     }
 
 }
@@ -336,12 +329,16 @@ button{
 
     margin:20px 0;
 
+    text-shadow:
+    0 0 30px
+    rgba(255,70,150,.3);
+
 }
 
 
 .birthday-title span{
 
-    color:#ff5b91;
+    color:#ff689d;
 
     font-family:
     'Dancing Script',
@@ -352,7 +349,7 @@ button{
 
 .birthday-text{
 
-    max-width:700px;
+    max-width:750px;
 
     margin:auto;
 
@@ -360,7 +357,7 @@ button{
 
     font-size:17px;
 
-    opacity:.85;
+    opacity:.9;
 
 }
 
@@ -373,11 +370,17 @@ button{
 
     background:
 
+    radial-gradient(
+        circle at 80% 20%,
+        rgba(255,0,120,.35),
+        transparent 30%
+    ),
+
     linear-gradient(
         135deg,
-        #12000c,
-        #300017,
-        #0d0008
+        #16000e,
+        #4a0027,
+        #1b0033
     );
 
 }
@@ -399,19 +402,27 @@ button{
 
     line-height:1.9;
 
-    opacity:.8;
+    opacity:.85;
 
 }
 
 
 /* =========================================
-   GAME 1 & GAME 3
+   GAMES
 ========================================= */
 
 #game1,
 #game3{
 
-    background:#080008;
+    background:
+
+    radial-gradient(
+        circle,
+        rgba(255,0,110,.18),
+        transparent 50%
+    ),
+
+    #080008;
 
 }
 
@@ -427,20 +438,24 @@ button{
     border-radius:30px;
 
     background:
-    rgba(255,255,255,.05);
+    rgba(255,255,255,.06);
 
     border:
     1px solid
-    rgba(255,255,255,.1);
+    rgba(255,255,255,.15);
 
     backdrop-filter:blur(15px);
+
+    box-shadow:
+    0 20px 60px
+    rgba(0,0,0,.4);
 
 }
 
 
 .game-number{
 
-    color:#ff5c91;
+    color:#ff6a9b;
 
     letter-spacing:3px;
 
@@ -480,7 +495,7 @@ button{
     rgba(255,255,255,.15);
 
     background:
-    rgba(255,255,255,.05);
+    rgba(255,255,255,.06);
 
     color:white;
 
@@ -496,7 +511,7 @@ button{
 .answer:hover{
 
     background:
-    rgba(255,90,145,.2);
+    rgba(255,60,140,.25);
 
     transform:
     translateY(-3px);
@@ -516,7 +531,7 @@ button{
 
 
 /* =========================================
-   GAME 2 - CATCH MY HEART
+   GAME 2
 ========================================= */
 
 #heartGame{
@@ -524,10 +539,18 @@ button{
     background:
 
     radial-gradient(
-        circle,
-        #35001d,
-        #080008 65%
-    );
+        circle at 20% 20%,
+        rgba(255,0,100,.3),
+        transparent 30%
+    ),
+
+    radial-gradient(
+        circle at 80% 80%,
+        rgba(140,0,255,.3),
+        transparent 35%
+    ),
+
+    #090009;
 
 }
 
@@ -538,7 +561,7 @@ button{
 
     line-height:1.8;
 
-    opacity:.8;
+    opacity:.85;
 
 }
 
@@ -574,13 +597,13 @@ button{
 
     radial-gradient(
         circle at center,
-        rgba(255,70,130,.12),
+        rgba(255,70,130,.18),
         rgba(255,255,255,.02)
     );
 
     border:
     1px solid
-    rgba(255,255,255,.12);
+    rgba(255,255,255,.15);
 
 }
 
@@ -598,7 +621,7 @@ button{
     border-radius:50%;
 
     background:
-    rgba(255,70,130,.15);
+    rgba(255,70,130,.18);
 
     font-size:35px;
 
@@ -616,8 +639,8 @@ button{
     transform .2s ease;
 
     box-shadow:
-    0 0 25px
-    rgba(255,70,130,.25);
+    0 0 30px
+    rgba(255,50,140,.4);
 
 }
 
@@ -649,12 +672,17 @@ button{
     background:
 
     radial-gradient(
-        circle,
-        #520022,
-        transparent 50%
+        circle at center,
+        rgba(255,0,110,.35),
+        transparent 40%
     ),
 
-    #080008;
+    linear-gradient(
+        135deg,
+        #260014,
+        #58002e,
+        #210038
+    );
 
 }
 
@@ -670,6 +698,12 @@ button{
     1.5s
     infinite;
 
+    filter:
+    drop-shadow(
+        0 0 25px
+        rgba(255,60,140,.5)
+    );
+
 }
 
 
@@ -678,7 +712,8 @@ button{
     50%{
 
         transform:
-        translateY(-18px);
+        translateY(-18px)
+        rotate(3deg);
 
     }
 
@@ -708,7 +743,21 @@ button{
 
 #photos{
 
-    background:#080808;
+    background:
+
+    radial-gradient(
+        circle at 10% 10%,
+        rgba(255,0,110,.2),
+        transparent 25%
+    ),
+
+    radial-gradient(
+        circle at 90% 90%,
+        rgba(120,0,255,.2),
+        transparent 30%
+    ),
+
+    #080008;
 
     align-items:flex-start;
 
@@ -731,7 +780,7 @@ button{
 
 .section-subtitle{
 
-    opacity:.65;
+    opacity:.7;
 
     margin-bottom:45px;
 
@@ -740,7 +789,7 @@ button{
 
 .gallery{
 
-    max-width:900px;
+    max-width:950px;
 
     margin:auto;
 
@@ -749,14 +798,12 @@ button{
     grid-template-columns:
     repeat(2,1fr);
 
-    gap:20px;
+    gap:25px;
 
 }
 
 
 .photo-card{
-
-    height:390px;
 
     border-radius:25px;
 
@@ -766,6 +813,14 @@ button{
 
     background:#151515;
 
+    border:
+    1px solid
+    rgba(255,255,255,.12);
+
+    box-shadow:
+    0 20px 50px
+    rgba(0,0,0,.5);
+
 }
 
 
@@ -773,18 +828,75 @@ button{
 
     width:100%;
 
-    height:100%;
+    height:420px;
 
     object-fit:cover;
 
-    transition:.6s;
+    display:block;
+
+    image-rendering:auto;
+
+    filter:
+    contrast(1.05)
+    saturate(1.08);
+
+    transition:
+    transform .7s ease,
+    filter .7s ease;
 
 }
 
 
 .photo-card:hover img{
 
-    transform:scale(1.08);
+    transform:scale(1.05);
+
+    filter:
+    contrast(1.08)
+    saturate(1.2);
+
+}
+
+
+.photo-message{
+
+    padding:25px;
+
+    text-align:left;
+
+    background:
+
+    linear-gradient(
+        135deg,
+        rgba(255,20,110,.15),
+        rgba(120,20,255,.12)
+    );
+
+}
+
+
+.photo-message h3{
+
+    font-family:
+    'Dancing Script',
+    cursive;
+
+    font-size:30px;
+
+    color:#ff719f;
+
+    margin-bottom:12px;
+
+}
+
+
+.photo-message p{
+
+    font-size:15px;
+
+    line-height:1.8;
+
+    opacity:.86;
 
 }
 
@@ -797,33 +909,48 @@ button{
 
     background:
 
-    linear-gradient(
-        rgba(5,0,5,.7),
-        rgba(5,0,5,.9)
+    radial-gradient(
+        circle at 10% 20%,
+        rgba(255,0,100,.35),
+        transparent 30%
     ),
 
-    url("pic3.jpg")
-    center/cover fixed;
+    radial-gradient(
+        circle at 90% 80%,
+        rgba(120,0,255,.35),
+        transparent 30%
+    ),
+
+    linear-gradient(
+        135deg,
+        #18000e,
+        #420024,
+        #16002c
+    );
 
 }
 
 
 .letter{
 
-    max-width:760px;
+    max-width:780px;
 
-    padding:45px 30px;
+    padding:50px 30px;
 
     border-radius:30px;
 
     background:
-    rgba(0,0,0,.45);
+    rgba(0,0,0,.35);
 
     border:
     1px solid
-    rgba(255,255,255,.15);
+    rgba(255,255,255,.18);
 
-    backdrop-filter:blur(10px);
+    backdrop-filter:blur(15px);
+
+    box-shadow:
+    0 25px 80px
+    rgba(0,0,0,.4);
 
 }
 
@@ -839,7 +966,7 @@ button{
 
     color:#ff6495;
 
-    margin-bottom:25px;
+    margin-bottom:30px;
 
 }
 
@@ -850,87 +977,106 @@ button{
 
     line-height:2;
 
-    opacity:.9;
+    opacity:.92;
 
 }
 
 
 /* =========================================
-   FINAL SURPRISE
+   FINAL TRANSITION
 ========================================= */
 
-#finalSurprise{
+#transition{
 
     background:
 
     radial-gradient(
         circle,
-        #65002d,
-        #15000d 55%,
+        #680034,
+        #190018 55%,
         #050005
     );
 
 }
 
 
-.surprise-title{
+.transition-content{
 
-    font-size:
-    clamp(42px,8vw,75px);
+    animation:
+    transitionAppear
+    2s
+    ease
+    forwards;
 
 }
 
 
-.surprise-text{
+.transition-content p{
+
+    font-size:18px;
+
+    letter-spacing:3px;
+
+    opacity:.7;
+
+}
+
+
+.transition-content h2{
+
+    font-size:
+    clamp(40px,8vw,75px);
 
     margin-top:20px;
 
-    line-height:1.8;
-
-    opacity:.8;
-
 }
 
 
-.final-hidden{
+.transition-heart{
 
-    display:none;
+    font-size:70px;
 
     margin-top:40px;
 
-}
-
-
-.final-hidden.show{
-
-    display:block;
+    animation:
+    heartPulse
+    1.5s
+    infinite;
 
 }
 
 
-.final-hidden h2{
+@keyframes transitionAppear{
 
-    font-family:
-    'Dancing Script',
-    cursive;
+    from{
+        opacity:0;
+        transform:
+        scale(.8);
+    }
 
-    color:#ff5c91;
-
-    font-size:
-    clamp(60px,12vw,110px);
+    to{
+        opacity:1;
+        transform:
+        scale(1);
+    }
 
 }
 
 
-.final-hidden p{
+@keyframes heartPulse{
 
-    max-width:700px;
+    50%{
 
-    margin:20px auto;
+        transform:
+        scale(1.25);
 
-    line-height:2;
+        filter:
+        drop-shadow(
+            0 0 25px
+            rgba(255,50,140,.8)
+        );
 
-    font-size:18px;
+    }
 
 }
 
@@ -945,11 +1091,66 @@ button{
 
     linear-gradient(
         rgba(0,0,0,.35),
-        rgba(0,0,0,.85)
+        rgba(0,0,0,.82)
     ),
 
     url("pic4.jpg")
     center/cover;
+
+}
+
+
+.love-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    radial-gradient(
+        circle at center,
+        rgba(255,40,130,.2),
+        transparent 45%
+    );
+
+    animation:
+    finalGlow
+    6s
+    infinite alternate;
+
+}
+
+
+@keyframes finalGlow{
+
+    from{
+        opacity:.5;
+    }
+
+    to{
+        opacity:1;
+    }
+
+}
+
+
+.love-content{
+
+    position:relative;
+
+    z-index:3;
+
+}
+
+
+.final-small{
+
+    font-size:16px;
+
+    letter-spacing:3px;
+
+    opacity:.7;
 
 }
 
@@ -969,7 +1170,9 @@ button{
 
     text-shadow:
     0 0 40px
-    rgba(255,70,130,.5);
+    rgba(255,70,130,.7);
+
+    margin:25px 0;
 
 }
 
@@ -983,6 +1186,10 @@ button{
     font-size:19px;
 
     line-height:2;
+
+    text-shadow:
+    0 2px 10px
+    rgba(0,0,0,.8);
 
 }
 
@@ -1000,9 +1207,9 @@ button{
     }
 
 
-    .photo-card{
+    .photo-card img{
 
-        height:430px;
+        height:420px;
 
     }
 
@@ -1017,6 +1224,13 @@ button{
     .letter{
 
         padding:35px 20px;
+
+    }
+
+
+    .love-text{
+
+        font-size:17px;
 
     }
 
